@@ -2,9 +2,9 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-<title>BMA Accident Analysis | Traffic Accident Dashboard (Year 2566–2568) — © Prapawadee_W.</title>
-<meta name="description" content="Dashboard วิเคราะห์อุบัติเหตุบาดเจ็บสาหัสและเสียชีวิต บช.น. ปี 2566–2568 โดย Prapawadee W. กลุ่มงานสถิติและวิจัย กองนโยบายและแผนงาน สำนักการจราจรและขนส่ง กรุงเทพมหานคร">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BMA Accident Analysis | Dashboard (Year 2566–2568) — © Prapawadee_W.</title>
+<meta name="description" content="Dashboard วิเคราะห์อุบัติเหตุบาดเจ็บสาหัสและเสียชีวิต บช.น. ปี 2566–2568 โดย Prapawadee W. กลุ่มสถิติและวิจัย กองนโยบายและแผน สำนักการจราจรและขนส่ง กรุงเทพมหานคร">
 <meta name="author" content="Prapawadee W.">
 <meta name="theme-color" content="#0f1923">
 <meta property="og:title" content="BMA Accident Analysis Dashboard Year 2566–2568">
@@ -15,8 +15,8 @@
 <style>
 /* ===== Base ===== */
 *{box-sizing:border-box;margin:0;padding:0}
-@font-face{font-family:'NumericOverride';src:local('Arial'),local('Helvetica');unicode-range:U+0030-0039}
-body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color:#e8edf2;font-size:15px;min-height:100vh}
+body{font-family:'Sarabun',sans-serif;background:#0f1923;color:#e8edf2;font-size:15px;min-height:100vh;line-height:1.55;text-rendering:optimizeLegibility}
+input,button,select,textarea{font-family:'Sarabun',sans-serif}
 
 /* ===== Sidebar ===== */
 .sidebar{position:fixed;left:0;top:0;bottom:0;width:220px;background:#0a1520;border-right:1px solid #1e3050;z-index:200;overflow-y:auto;padding:0}
@@ -77,17 +77,14 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   .kpi-val{font-size:26px}
   .page-header h1{font-size:18px}
 }
-
 /* ===== RESPONSIVE: Mobile (max 767px) ===== */
 @media(max-width:767px){
-  /* Sidebar กลายเป็น bottom nav */
   .sidebar{
     position:fixed;left:0;right:0;top:auto;bottom:0;width:100%;
     height:auto;border-right:none;border-top:1px solid #1e3050;
     display:flex;flex-direction:row;overflow-x:auto;overflow-y:hidden;
     padding:0;z-index:300;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
   }
   .sidebar::-webkit-scrollbar{display:none}
   .sidebar-logo{display:none}
@@ -100,57 +97,29 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   }
   .nav-item.active{border-top-color:#4fa3e8;border-left-color:transparent}
   .nav-item .icon{font-size:20px;width:auto}
-
-  /* Main ขยับขึ้น ให้ bottom nav ไม่บัง */
   .main{margin-left:0;padding:12px 12px 80px 12px}
-
-  /* Grid ทุก col → 1 col */
   .g2,.g3,.g12,.g21,.g13,
-  .chart-grid[style*="grid-template-columns"]{
-    grid-template-columns:1fr !important
-  }
-
-  /* KPI row */
+  .chart-grid[style*="grid-template-columns"]{grid-template-columns:1fr !important}
   .kpi-row{grid-template-columns:repeat(2,1fr);gap:10px}
   .kpi{padding:12px 14px}
   .kpi-val{font-size:24px}
   .kpi-label{font-size:11px}
   .kpi-sub{font-size:10px}
-
-  /* Page header */
   .page-header{flex-direction:column;gap:8px}
   .page-header h1{font-size:16px}
   .page-header p{font-size:12px}
-
-  /* Card */
   .card{padding:14px}
   .card-title{font-size:13px}
-
-  /* Chart height ลดลงบน mobile */
   canvas{max-height:240px !important}
-
-  /* Compare table scroll ได้ */
   .cmp-table{font-size:12px}
   .card > .cmp-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
-
-  /* Insight box */
   .insight-box{font-size:12px;padding:10px 12px}
-
-  /* Bar list */
   .bar-lbl{font-size:11px}
-
-  /* About page: profile grid → stack */
-  div[style*="grid-template-columns:300px"]{
-    display:flex !important;flex-direction:column !important;gap:16px
-  }
-  div[style*="grid-template-columns:300px"] > div:first-child{
-    max-width:100%
-  }
-
-  /* Footer */
+  div[style*="grid-template-columns:300px"]{display:flex !important;flex-direction:column !important;gap:16px}
+  div[style*="grid-template-columns:300px"] > div:first-child{max-width:100%}
   .footer{margin-left:0;padding:16px 12px 80px}
+  .portfolio-grid,.portfolio-metrics,.process-flow{grid-template-columns:1fr}
 }
-
 /* ===== RESPONSIVE: Small Mobile (max 400px) ===== */
 @media(max-width:400px){
   .kpi-row{grid-template-columns:1fr 1fr}
@@ -159,9 +128,36 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
 }
 
 .card{background:#0e1e30;border-radius:10px;padding:18px;border:1px solid #1e3050}
-.card-title{font-size:14px;font-weight:700;color:#c8ddf2;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.card-title .icon{font-size:18px}
+.card-title{
+  font-size:14px;font-weight:700;color:#c8ddf2;
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+  padding-bottom:10px;
+  border-bottom:1px solid #1a2d45;
+  position:relative;
+}
+/* gradient underline */
+.card-title::after{
+  content:'';position:absolute;bottom:-1px;left:0;
+  width:48px;height:2px;
+  background:linear-gradient(90deg,#4fa3e8,#a78bfa);
+  border-radius:2px;
+}
+.card-title .icon{font-size:18px;flex-shrink:0}
 .card-sub{font-size:11px;color:#4a6080;font-weight:400;margin-left:4px}
+
+/* badge ท้าย card-title */
+.ct-badge{
+  margin-left:auto;flex-shrink:0;
+  padding:2px 9px;border-radius:10px;font-size:10px;font-weight:700;
+  letter-spacing:.4px;text-transform:uppercase;
+}
+.ct-trend  {background:#0a2a1a;color:#34d399;border:1px solid #1a4a2a}
+.ct-compare{background:#1a1a3a;color:#a78bfa;border:1px solid #2a2a5a}
+.ct-ratio  {background:#2a1a00;color:#fbbf24;border:1px solid #4a3000}
+.ct-map    {background:#0a1e30;color:#4fa3e8;border:1px solid #1a3a5a}
+.ct-risk   {background:#3a0e0e;color:#f87171;border:1px solid #5a1a1a}
+.ct-info   {background:#1a1a2a;color:#c8ddf2;border:1px solid #2a2a4a}
 
 /* ===== Bar List ===== */
 .bar-list{list-style:none}
@@ -205,6 +201,25 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
 .yr-btn:hover{border-color:#4fa3e8;color:#4fa3e8}
 .yr-btn.active{background:#1e3a5a;border-color:#4fa3e8;color:#4fa3e8}
 
+/* ===== Portfolio Case Study ===== */
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:16px}
+.portfolio-card{background:linear-gradient(160deg,#0a1520 0%,#0d2235 100%);border:1px solid #1f3a58;border-radius:12px;padding:16px}
+.portfolio-label{font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:#7ba4cd;font-weight:700;margin-bottom:8px}
+.portfolio-head{font-size:17px;font-weight:700;color:#e8f4ff;margin-bottom:8px}
+.portfolio-copy{font-size:13px;line-height:1.8;color:#9ab6d3}
+.portfolio-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.metric-chip{background:#0a1520;border:1px solid #1f3550;border-radius:10px;padding:10px}
+.metric-chip .val{font-size:20px;font-weight:800;color:#4fa3e8;line-height:1.1}
+.metric-chip .txt{font-size:11px;color:#6f90b2;margin-top:3px}
+.process-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.flow-step{background:#0a1520;border:1px solid #1e3050;border-radius:10px;padding:10px}
+.flow-step .step{font-size:10px;color:#7ba4cd;font-weight:700;letter-spacing:.4px}
+.flow-step .name{font-size:12px;color:#d7e8f8;font-weight:700;margin-top:4px}
+.flow-step .desc{font-size:11px;color:#6885a5;margin-top:3px;line-height:1.5}
+.design-list{list-style:none;display:grid;gap:8px;font-size:12px;color:#8fb0cf}
+.design-list li{background:#0a1520;border:1px solid #1e3050;border-radius:8px;padding:10px 12px}
+.design-list strong{color:#e8f4ff}
+
 /* ===== Footer ===== */
 .footer{text-align:center;padding:20px;color:#3a5070;font-size:12px;border-top:1px solid #1e3050;margin-top:24px}
 </style>
@@ -239,17 +254,24 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
 <div id="page-overview" class="page active">
   <div class="page-header">
     <div><h1>📊 สรุปภาพรวมอุบัติเหตุ บช.น.</h1><p>ข้อมูลอุบัติเหตุบาดเจ็บสาหัสและเสียชีวิต ปี 2566–2568</p></div>
-    <span class="badge">รวม 3 ปี: 5,615 ราย</span>
+    <span class="badge" id="overview-badge">รวม 3 ปี: 5,615 ราย</span>
+  </div>
+
+  <div class="year-filter" id="year-filter">
+    <button class="yr-btn active" data-year="all" onclick="setActiveYear('all')">รวมทุกปี</button>
+    <button class="yr-btn" data-year="2566" onclick="setActiveYear('2566')">ปี 2566</button>
+    <button class="yr-btn" data-year="2567" onclick="setActiveYear('2567')">ปี 2567</button>
+    <button class="yr-btn" data-year="2568" onclick="setActiveYear('2568')">ปี 2568</button>
   </div>
 
   <!-- KPI 3 ปีรวม -->
   <div class="kpi-row">
-    <div class="kpi blue"><div class="kpi-label"><span style="font-size:16px">🚨</span> เหตุการณ์ทั้งหมด (3 ปี)</div><div class="kpi-val">2,600</div><div class="kpi-sub">เฉลี่ย 867 เหตุการณ์/ปี</div></div>
-    <div class="kpi red"><div class="kpi-label"><span style="font-size:16px">💀</span> เสียชีวิตรวม (3 ปี)</div><div class="kpi-val">2,311</div><div class="kpi-sub">41.2% ของผู้ประสบเหตุทั้งหมด</div></div>
-    <div class="kpi orange"><div class="kpi-label"><span style="font-size:16px">🏥</span> บาดเจ็บนอน รพ. (3 ปี)</div><div class="kpi-val">1,064</div><div class="kpi-sub">18.9% ของผู้ประสบเหตุทั้งหมด</div></div>
-    <div class="kpi green"><div class="kpi-label"><span style="font-size:16px">🟢</span> ไม่บาดเจ็บ/บาดเจ็บเล็กน้อย</div><div class="kpi-val">2,240</div><div class="kpi-sub">39.9% ของผู้ประสบเหตุทั้งหมด</div></div>
-    <div class="kpi purple"><div class="kpi-label"><span style="font-size:16px">🏍️</span> รถจักรยานยนต์</div><div class="kpi-val">53.6%</div><div class="kpi-sub">สัดส่วนยานพาหนะที่เกี่ยวข้องสูงสุด</div></div>
-    <div class="kpi teal"><div class="kpi-label"><span style="font-size:16px">⚠️</span> อัตราเสียชีวิต จยย.</div><div class="kpi-val">61.9%</div><div class="kpi-sub">ของผู้ขับขี่ จยย. ที่ไม่สวมหมวก</div></div>
+    <div class="kpi blue"><div class="kpi-label"><span style="font-size:16px">🚨</span> <span id="kpi-events-label">เหตุการณ์ทั้งหมด (3 ปี)</span></div><div class="kpi-val" id="kpi-events">2,600</div><div class="kpi-sub" id="kpi-events-sub">เฉลี่ย 867 เหตุการณ์/ปี</div></div>
+    <div class="kpi red"><div class="kpi-label"><span style="font-size:16px">💀</span> <span id="kpi-dead-label">เสียชีวิตรวม (3 ปี)</span></div><div class="kpi-val" id="kpi-dead">2,311</div><div class="kpi-sub" id="kpi-dead-sub">41.2% ของผู้ประสบเหตุทั้งหมด</div></div>
+    <div class="kpi orange"><div class="kpi-label"><span style="font-size:16px">🏥</span> <span id="kpi-admit-label">บาดเจ็บนอน รพ. (3 ปี)</span></div><div class="kpi-val" id="kpi-admit">1,064</div><div class="kpi-sub" id="kpi-admit-sub">18.9% ของผู้ประสบเหตุทั้งหมด</div></div>
+    <div class="kpi green"><div class="kpi-label"><span style="font-size:16px">🟢</span> ไม่บาดเจ็บ/บาดเจ็บเล็กน้อย</div><div class="kpi-val" id="kpi-minor">2,240</div><div class="kpi-sub" id="kpi-minor-sub">39.9% ของผู้ประสบเหตุทั้งหมด</div></div>
+    <div class="kpi purple"><div class="kpi-label"><span style="font-size:16px">🏍️</span> รถจักรยานยนต์</div><div class="kpi-val" id="kpi-bike-share">53.6%</div><div class="kpi-sub">สัดส่วนยานพาหนะที่เกี่ยวข้องสูงสุด</div></div>
+    <div class="kpi teal"><div class="kpi-label"><span style="font-size:16px">⚠️</span> อัตราเสียชีวิต จยย.</div><div class="kpi-val" id="kpi-bike-dead-rate">61.9%</div><div class="kpi-sub">ของผู้ขับขี่ จยย. ที่ไม่สวมหมวก</div></div>
   </div>
 
   <!-- เปรียบเทียบรายปี -->
@@ -285,11 +307,11 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
 
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">📊</span>จำนวนเหตุการณ์และผู้เสียชีวิต เปรียบเทียบ 3 ปี</div>
+      <div class="card-title"><span class="icon">📊</span>จำนวนเหตุการณ์และผู้เสียชีวิต เปรียบเทียบ 3 ปี<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartOverviewCompare" height="220"></canvas>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">🥧</span>สัดส่วนสถานะบาดเจ็บ (รวม 3 ปี)</div>
+      <div class="card-title"><span class="icon">🥧</span>สัดส่วนสถานะบาดเจ็บ (รวม 3 ปี)<span class="ct-badge ct-ratio">Ratio</span></div>
       <canvas id="chartOverviewPie" height="220"></canvas>
       <div class="insight-box insight-red" style="margin-top:12px">
         <strong>⚠️ สัดส่วนเสียชีวิตสูงกว่าบาดเจ็บนอน รพ. ถึง 2.2 เท่า</strong><br>
@@ -300,11 +322,11 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
 
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">🏍️</span>ชนิดรถ vs อัตราเสียชีวิต</div>
+      <div class="card-title"><span class="icon">🏍️</span>ชนิดรถ vs อัตราเสียชีวิต<span class="ct-badge ct-risk">Risk</span></div>
       <canvas id="chartVehicleDead" height="240"></canvas>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">⚠️</span>พฤติกรรมที่เป็นปัจจัย (รวม 3 ปี)</div>
+      <div class="card-title"><span class="icon">⚠️</span>พฤติกรรมที่เป็นปัจจัย (รวม 3 ปี)<span class="ct-badge ct-risk">Factor</span></div>
       <ul class="bar-list" id="behListOverview"></ul>
     </div>
   </div>
@@ -327,7 +349,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   </div>
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">🌙</span>สภาพแสงสว่าง × สถานะ</div>
+      <div class="card-title"><span class="icon">🌙</span>สภาพแสงสว่าง × สถานะ<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartLighting" height="220"></canvas>
       <div class="insight-box insight-orange">
         <strong>76% ของการเสียชีวิตเกิดช่วงมองเห็นชัด</strong><br>
@@ -335,7 +357,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
       </div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">🏗️</span>ลักษณะถนน × สถานะ</div>
+      <div class="card-title"><span class="icon">🏗️</span>ลักษณะถนน × สถานะ<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartRoadShape" height="220"></canvas>
       <div class="insight-box">
         <strong>ทางตรง</strong> มีผู้เสียชีวิตสูงสุด 1,793 ราย — สอดคล้องกับพฤติกรรมขับเร็วเกินกำหนด
@@ -349,11 +371,11 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   <div class="page-header"><div><h1>🏍️ วิเคราะห์ยานพาหนะ</h1><p>ชนิดรถ รูปแบบอุบัติเหตุ และอุปกรณ์นิรภัย</p></div></div>
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">🏍️</span>ชนิดรถ × สถานะบาดเจ็บ</div>
+      <div class="card-title"><span class="icon">🏍️</span>ชนิดรถ × สถานะบาดเจ็บ<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartVehicleStatus" height="280"></canvas>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">🤝</span>รูปแบบอุบัติเหตุ × สถานะ</div>
+      <div class="card-title"><span class="icon">🤝</span>รูปแบบอุบัติเหตุ × สถานะ<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartAccidentForm" height="280"></canvas>
       <div class="insight-box insight-red">
         <strong>ไม่มีคู่กรณี = อัตราเสียชีวิต 75.5%</strong><br>
@@ -363,7 +385,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   </div>
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">⛑️</span>หมวกนิรภัย × สถานะ (เฉพาะ จยย.)</div>
+      <div class="card-title"><span class="icon">⛑️</span>หมวกนิรภัย × สถานะ (เฉพาะ จยย.)<span class="ct-badge ct-risk">Safety</span></div>
       <canvas id="chartHelmet" height="220"></canvas>
       <div class="insight-box insight-red">
         <strong>ไม่สวมหมวก → เสียชีวิต 62.3% vs สวมหมวก → 56.5%</strong><br>
@@ -371,7 +393,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
       </div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">🪢</span>เข็มขัดนิรภัย × สถานะ (รถเก๋ง+กระบะ)</div>
+      <div class="card-title"><span class="icon">🪢</span>เข็มขัดนิรภัย × สถานะ (รถเก๋ง+กระบะ)<span class="ct-badge ct-risk">Safety</span></div>
       <canvas id="chartBelt" height="220"></canvas>
       <div class="insight-box insight-green">
         <strong>คาดเข็มขัด → เสียชีวิตเพียง 4.8%</strong><br>
@@ -386,11 +408,11 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   <div class="page-header"><div><h1>⚠️ พฤติกรรมและปัจจัยที่เป็นสาเหตุ</h1><p>วิเคราะห์พฤติกรรมผู้ขับขี่และปัจจัยแวดล้อม</p></div></div>
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">⚠️</span>พฤติกรรมที่เป็นปัจจัย (จำนวนครั้ง)</div>
+      <div class="card-title"><span class="icon">⚠️</span>พฤติกรรมที่เป็นปัจจัย (จำนวนครั้ง)<span class="ct-badge ct-risk">Factor</span></div>
       <ul class="bar-list" id="behListDetail"></ul>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">🍺</span>แอลกอฮอล์ × สถานะบาดเจ็บ</div>
+      <div class="card-title"><span class="icon">🍺</span>แอลกอฮอล์ × สถานะบาดเจ็บ<span class="ct-badge ct-risk">Risk</span></div>
       <canvas id="chartAlcohol" height="220"></canvas>
       <div class="insight-box insight-orange">
         <strong>ดื่มเกินกำหนด → เสียชีวิต 78 ราย ใน 87 คนที่ตรวจพบ (89.7%)</strong><br>
@@ -400,11 +422,11 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   </div>
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">🛣️</span>ประเภทถนน × สถานะ</div>
+      <div class="card-title"><span class="icon">🛣️</span>ประเภทถนน × สถานะ<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartRoadType" height="250"></canvas>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">💼</span>อาชีพผู้เสียชีวิต Top 8</div>
+      <div class="card-title"><span class="icon">💼</span>อาชีพผู้เสียชีวิต Top 8<span class="ct-badge ct-info">Profile</span></div>
       <ul class="bar-list" id="occupationList"></ul>
       <div class="insight-box">
         <strong>รับจ้างทั่วไปเสียชีวิตสูงสุด 791 ราย</strong> รองมาคือพนักงาน/ลูกจ้าง 468 ราย<br>
@@ -419,7 +441,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   <div class="page-header"><div><h1>👤 วิเคราะห์กลุ่มเสี่ยง</h1><p>อายุ เพศ และประเภทผู้ใช้ถนน</p></div></div>
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">🎂</span>กลุ่มอายุ × สถานะบาดเจ็บ</div>
+      <div class="card-title"><span class="icon">🎂</span>กลุ่มอายุ × สถานะบาดเจ็บ<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartAge" height="260"></canvas>
       <div class="insight-box insight-red">
         <strong>25–34 ปี เสียชีวิตสูงสุด 576 ราย</strong><br>
@@ -427,7 +449,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
       </div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">⚥</span>เพศ × สถานะบาดเจ็บ</div>
+      <div class="card-title"><span class="icon">⚥</span>เพศ × สถานะบาดเจ็บ<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartGender" height="220"></canvas>
       <div class="insight-box">
         <strong>ชายเสียชีวิต 1,871 ราย vs หญิง 440 ราย</strong><br>
@@ -437,11 +459,11 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   </div>
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">🚶</span>ประเภทผู้ใช้ถนน × สถานะ</div>
+      <div class="card-title"><span class="icon">🚶</span>ประเภทผู้ใช้ถนน × สถานะ<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartRoadUser" height="220"></canvas>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">📋</span>สรุปกลุ่มเสี่ยงสูงสุด</div>
+      <div class="card-title"><span class="icon">📋</span>สรุปกลุ่มเสี่ยงสูงสุด<span class="ct-badge ct-risk">Risk</span></div>
       <table class="cmp-table">
         <thead><tr><th>กลุ่ม</th><th>จำนวน</th><th>เสียชีวิต</th><th>อัตรา</th></tr></thead>
         <tbody>
@@ -468,7 +490,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   </div>
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">📊</span>อัตราเสียชีวิต (%) แยกสัญชาติ</div>
+      <div class="card-title"><span class="icon">📊</span>อัตราเสียชีวิต (%) แยกสัญชาติ<span class="ct-badge ct-risk">Risk</span></div>
       <canvas id="chartNatRate" height="240"></canvas>
       <div class="insight-box insight-red">
         <strong>ลาว 60% → เมียนมา 52.9% → กัมพูชา 46.2%</strong><br>
@@ -476,13 +498,13 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
       </div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">🏍️</span>ชนิดรถ: ไทย vs ต่างชาติ</div>
+      <div class="card-title"><span class="icon">🏍️</span>ชนิดรถ: ไทย vs ต่างชาติ<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartNatVehicle" height="240"></canvas>
     </div>
   </div>
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">🚶</span>บทบาทบนท้องถนน: ไทย vs ต่างชาติ</div>
+      <div class="card-title"><span class="icon">🚶</span>บทบาทบนท้องถนน: ไทย vs ต่างชาติ<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartNatRole" height="220"></canvas>
       <div class="insight-box insight-orange">
         <strong>ต่างชาติ 35% เป็นผู้โดยสาร vs ไทยเพียง 16%</strong><br>
@@ -490,7 +512,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
       </div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">⛑️</span>หมวกนิรภัย จยย.: ไทย vs ต่างชาติ</div>
+      <div class="card-title"><span class="icon">⛑️</span>หมวกนิรภัย จยย.: ไทย vs ต่างชาติ<span class="ct-badge ct-risk">Safety</span></div>
       <canvas id="chartNatHelmet" height="220"></canvas>
     </div>
   </div>
@@ -501,11 +523,11 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   <div class="page-header"><div><h1>📍 วิเคราะห์พื้นที่และถนน</h1><p>จุดเกิดเหตุระดับ บก. และลักษณะถนน</p></div></div>
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">🏢</span>จำนวนเหตุการณ์แยก บก. (Top 9)</div>
+      <div class="card-title"><span class="icon">🏢</span>จำนวนเหตุการณ์แยก บก. (Top 9)<span class="ct-badge ct-map">Area</span></div>
       <canvas id="chartBkEvents" height="260"></canvas>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">💀</span>จำนวนเสียชีวิตแยก บก. (Top 9)</div>
+      <div class="card-title"><span class="icon">💀</span>จำนวนเสียชีวิตแยก บก. (Top 9)<span class="ct-badge ct-risk">Area</span></div>
       <canvas id="chartBkDead" height="260"></canvas>
       <div class="insight-box">
         <strong>บก.2 มีเหตุการณ์และเสียชีวิตสูงสุดทุกปี</strong><br>
@@ -515,11 +537,11 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   </div>
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">🛣️</span>ประเภทถนน × สถานะ</div>
+      <div class="card-title"><span class="icon">🛣️</span>ประเภทถนน × สถานะ<span class="ct-badge ct-compare">Compare</span></div>
       <canvas id="chartRoadTypeL" height="260"></canvas>
     </div>
     <div class="card">
-      <div class="card-title"><span class="icon">🔀</span>อัตราเสียชีวิตตามลักษณะถนน (%)</div>
+      <div class="card-title"><span class="icon">🔀</span>อัตราเสียชีวิตตามลักษณะถนน (%)<span class="ct-badge ct-risk">Risk</span></div>
       <canvas id="chartRoadShapeRate" height="260"></canvas>
       <div class="insight-box insight-red">
         <strong>ทางโค้ง = อัตราเสียชีวิตสูงสุด 54.5%</strong><br>
@@ -538,8 +560,8 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
       <div class="card-title" style="color:#f87171"><span class="icon">🚨</span>ลำดับความสำคัญ 1: รถจักรยานยนต์</div>
       <ul style="list-style:none;font-size:13px;color:#8aa8c8;line-height:2">
         <li>• <strong style="color:#e8f4ff">บังคับสวมหมวกนิรภัยเข้มข้น</strong> — ไม่สวมหมวก = 66% เสียชีวิต</li>
-        <li>• <strong style="color:#e8f4ff">พื้นที่ บก.2, บก.3, บก.9</strong> พื้นที่เสี่ยงสูง</li>
-        <li>• <strong style="color:#e8f4ff">กลุ่มเป้าหมาย อายุ 25–34 ปี</strong> ผู้ขับขี่เพศชาย</li>
+        <li>• <strong style="color:#e8f4ff">จุดตรวจ บก.2, บก.3, บก.9</strong> เน้นพื้นที่เสี่ยงสูง</li>
+        <li>• <strong style="color:#e8f4ff">กลุ่มเป้าหมาย อายุ 25–34 ปี</strong> ผู้ขับชาย</li>
         <li>• <strong style="color:#e8f4ff">ช่วงเวลาเสี่ยง</strong> ม.ค., พ.ย., ธ.ค.</li>
       </ul>
     </div>
@@ -555,10 +577,10 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
     <div class="card" style="border-color:#a78bfa">
       <div class="card-title" style="color:#a78bfa"><span class="icon">🌏</span>ลำดับความสำคัญ 3: แรงงานต่างชาติ</div>
       <ul style="list-style:none;font-size:13px;color:#8aa8c8;line-height:2">
-        <li>• <strong style="color:#e8f4ff">แรงงานต่างชาติมีอัตราเสียชีวิตสูงกว่าไทย</strong> 10–20%</li>
-        <li>• <strong style="color:#e8f4ff">ส่วนใหญ่เป็นผู้โดยสาร</strong> ซ้อนท้าย จยย. ไม่สวมหมวกนิรภัย</li>
+        <li>• <strong style="color:#e8f4ff">แรงงาน CLMV อัตราเสียชีวิตสูงกว่าไทย</strong> 10–20%</li>
+        <li>• <strong style="color:#e8f4ff">ส่วนใหญ่เป็นผู้โดยสาร</strong> ซ้อนท้าย จยย. ไม่สวมหมวก</li>
         <li>• <strong style="color:#e8f4ff">ประชาสัมพันธ์หลายภาษา</strong> (พม่า/ลาว/เขมร)</li>
-        <li>• <strong style="color:#e8f4ff">บังคับใช้กฎกับนายจ้าง</strong> ที่ให้แรงงานซ้อนท้ายไม่สวมหมวกนิรภัย</li>
+        <li>• <strong style="color:#e8f4ff">บังคับใช้กฎกับนายจ้าง</strong> ที่ให้แรงงานซ้อนท้ายไม่สวมหมวก</li>
       </ul>
     </div>
     <div class="card" style="border-color:#34d399">
@@ -573,15 +595,15 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   </div>
 
   <div class="card" style="margin-top:16px">
-    <div class="card-title"><span class="icon">📊</span>ตารางสรุปแนวโน้มและข้อเสนอแนะ</div>
+    <div class="card-title"><span class="icon">📊</span>ตารางสรุปแนวโน้มและข้อเสนอแนะ<span class="ct-badge ct-trend">Policy</span></div>
     <table class="cmp-table">
       <thead><tr><th>ตัวชี้วัด</th><th>ปี 2566</th><th>ปี 2567</th><th>ปี 2568</th><th>แนวโน้ม</th><th>ข้อเสนอแนะ</th></tr></thead>
       <tbody>
         <tr><td>เหตุการณ์</td><td>899</td><td>933</td><td>768</td><td><span class="pill pill-green">▼ ลดลง</span></td><td>รักษาแนวโน้มที่ดี ขยายมาตรการ</td></tr>
         <tr><td>อัตราเสียชีวิต</td><td>40.7%</td><td>40.2%</td><td>42.7%</td><td><span class="pill pill-red">▲ เพิ่มขึ้น</span></td><td>เน้นลดความรุนแรงแม้เหตุลด</td></tr>
-        <tr><td>ไม่สวมหมวกนิรภัย จยย.</td><td>570</td><td>608</td><td>446</td><td><span class="pill pill-green">▼ ลดลง</span></td><td>บังคับใช้กฎต่อเนื่อง</td></tr>
+        <tr><td>ไม่สวมหมวก จยย.</td><td>570</td><td>608</td><td>446</td><td><span class="pill pill-green">▼ ลดลง</span></td><td>บังคับใช้กฎต่อเนื่อง</td></tr>
         <tr><td>ขับเร็วเกินกำหนด</td><td>380</td><td>361</td><td>321</td><td><span class="pill pill-green">▼ ลดลง</span></td><td>เพิ่ม Speed Camera</td></tr>
-        <tr><td>ผู้เสียชีวิตต่างชาติ</td><td>61</td><td>73</td><td>27</td><td><span class="pill pill-green">▼ ลดลง</span></td><td>ประชาสัมพันธ์หลายภาษา</td></tr>
+        <tr><td>เสียชีวิตต่างชาติ</td><td>61</td><td>73</td><td>27</td><td><span class="pill pill-green">▼ ลดลง</span></td><td>ประชาสัมพันธ์หลายภาษา</td></tr>
       </tbody>
     </table>
   </div>
@@ -591,15 +613,43 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
 <!-- ======= PAGE: ABOUT ======= -->
 <div id="page-about" class="page">
   <div class="page-header">
-    <div><h1>👤 ผู้วิเคราะห์ข้อมูล</h1><p>Analyst Profile · Statistics &amp; Research Group, BMA</p></div>
+    <div><h1>👤 ผู้วิเคราะห์ข้อมูล</h1><p>Analyst Profile · Data Science + Graphic Design Portfolio</p></div>
     <span class="badge">Portfolio Project · Public Sector Data Analytics</span>
+  </div>
+
+  <div class="portfolio-grid">
+    <div class="portfolio-card">
+      <div class="portfolio-label">Case Study Summary</div>
+      <div class="portfolio-head">BMA Accident Intelligence Dashboard</div>
+      <div class="portfolio-copy">
+        โปรเจกต์นี้จัดวางในรูปแบบ Data Science Case Study ครบวงจร ตั้งแต่ data preparation,
+        statistical analysis, ไปจนถึง visual communication เพื่อสนับสนุนการตัดสินใจเชิงนโยบาย
+        อย่างเป็นระบบและตรวจสอบย้อนกลับได้.
+      </div>
+      <div class="portfolio-metrics">
+        <div class="metric-chip"><div class="val">2,600</div><div class="txt">เหตุการณ์</div></div>
+        <div class="metric-chip"><div class="val">5,615</div><div class="txt">ผู้ประสบเหตุ</div></div>
+        <div class="metric-chip"><div class="val">2,311</div><div class="txt">เสียชีวิต</div></div>
+        <div class="metric-chip"><div class="val">41.2%</div><div class="txt">อัตราเสียชีวิตรวม</div></div>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="portfolio-label">Project Pipeline</div>
+      <div class="portfolio-head">Data to Decision Workflow</div>
+      <div class="process-flow">
+        <div class="flow-step"><div class="step">STEP 1</div><div class="name">Collect</div><div class="desc">รวมข้อมูลเหตุการณ์และพาหนะจากหลายแหล่ง</div></div>
+        <div class="flow-step"><div class="step">STEP 2</div><div class="name">Clean</div><div class="desc">ตรวจคุณภาพข้อมูลและแก้รูปแบบตัวแปรสำคัญ</div></div>
+        <div class="flow-step"><div class="step">STEP 3</div><div class="name">Analyze</div><div class="desc">ทำ cross-tab, trend และ risk profiling รายกลุ่ม</div></div>
+        <div class="flow-step"><div class="step">STEP 4</div><div class="name">Communicate</div><div class="desc">ออกแบบ dashboard เพื่อเล่าเรื่องเชิงนโยบาย</div></div>
+      </div>
+    </div>
   </div>
 
   <!-- Profile Card -->
   <div style="display:grid;grid-template-columns:300px 1fr;gap:24px;margin-bottom:24px">
     <div class="card" style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:32px 24px;border-color:#1e4070">
       <div style="width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#1a5fa8,#4fa3e8);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:800;color:#fff;margin-bottom:16px;border:3px solid #1e4070">PW</div>
-      <div style="font-size:18px;font-weight:700;color:#e8f4ff;margin-bottom:4px">© Prapawadee Wachiraput</div>
+      <div style="font-size:18px;font-weight:700;color:#e8f4ff;margin-bottom:4px">© Prapawadee W.</div>
       <div style="font-size:13px;color:#4fa3e8;font-weight:600;margin-bottom:12px">Professional-Level Statistician</div>
       <div style="font-size:12px;color:#607898;line-height:1.8">
         กลุ่มงานสถิติและวิจัย<br>กองนโยบายและแผนงาน<br>
@@ -613,7 +663,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
 
     <div style="display:flex;flex-direction:column;gap:16px">
       <div class="card">
-        <div class="card-title"><span class="icon">📌</span>เกี่ยวกับนักวิเคราะห์</div>
+        <div class="card-title"><span class="icon">📌</span>เกี่ยวกับนักวิเคราะห์<span class="ct-badge ct-info">Profile</span></div>
         <p style="font-size:14px;color:#8aa8c8;line-height:1.9">
           นักวิชาการสถิติ ระดับชำนาญการ ที่มุ่งเน้นการนำข้อมูลและวิทยาศาสตร์ข้อมูล (Data Science)
           มาประยุกต์ใช้กับงานนโยบายภาครัฐ โดยเฉพาะด้านการจราจรและขนส่ง
@@ -624,7 +674,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
       </div>
 
       <div class="card">
-        <div class="card-title"><span class="icon">🛠️</span>ทักษะและเครื่องมือ</div>
+        <div class="card-title"><span class="icon">🛠️</span>ทักษะและเครื่องมือ<span class="ct-badge ct-info">Skills</span></div>
         <div style="display:flex;flex-wrap:wrap;gap:8px">
           <span style="background:#0a1520;border:1px solid #1e3050;border-radius:20px;padding:5px 12px;font-size:12px;color:#8aa8c8">📊 Statistical Analysis</span>
 <span style="background:#0a1520;border:1px solid #1e3050;border-radius:20px;padding:5px 12px;font-size:12px;color:#8aa8c8">🐍 Python (pandas · numpy)</span>
@@ -645,7 +695,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
   <!-- Project Details -->
   <div class="chart-grid g2">
     <div class="card">
-      <div class="card-title"><span class="icon">🔬</span>Methodology · กระบวนการวิเคราะห์</div>
+      <div class="card-title"><span class="icon">🔬</span>Methodology · กระบวนการวิเคราะห์<span class="ct-badge ct-info">Method</span></div>
       <div style="display:flex;flex-direction:column;gap:12px;font-size:13px">
         <div style="background:#0a1520;border-radius:8px;padding:14px;border-left:3px solid #4fa3e8">
           <div style="color:#4fa3e8;font-weight:700;margin-bottom:4px">📥 Data Collection & Cleaning</div>
@@ -667,14 +717,14 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
     </div>
 
     <div class="card">
-      <div class="card-title"><span class="icon">📂</span>เกี่ยวกับโครงการนี้</div>
+      <div class="card-title"><span class="icon">📂</span>เกี่ยวกับโครงการนี้<span class="ct-badge ct-info">About</span></div>
       <div style="font-size:13px;color:#8aa8c8;line-height:1.9;margin-bottom:16px">
-        Dashboard นี้เป็นส่วนหนึ่งของงานวิเคราะห์ข้อมูลอุบัติเหตุบาดเจ็บสาหัสและเสียชีวิต
-        ในพื้นที่กรุงเทพมหานคร ปี 2566–2568 โดยใช้ข้อมูลจากกองบัญชาการตำรวจนครบาล (บช.น.)
-        ครอบคลุม 2,600 เหตุการณ์ และผู้ประสบเหตุ 5,615 ราย
+        Dashboard นี้ออกแบบเพื่อใช้เป็น Portfolio ที่แสดงศักยภาพด้าน Data Science และ
+        Graphic Design ในงานภาครัฐ โดยเน้นทั้งความถูกต้องทางสถิติและความชัดเจนเชิงการสื่อสาร
+        สำหรับผู้บริหารและผู้กำหนดนโยบาย.
         <br><br>
-        วัตถุประสงค์เพื่อสนับสนุนการตัดสินใจเชิงนโยบายของกรุงเทพมหานคร
-        ในการแก้ไขปัญหาอุบัติเหตุจราจรทางถนนอย่างมีหลักฐานเชิงประจักษ์ (Evidence-based Policy)
+        แนวคิดหลักคือ Decision-ready Analytics: แสดงข้อมูลที่พร้อมตัดสินใจได้ทันที
+        ผ่านการระบุปัจจัยเสี่ยง กลุ่มเปราะบาง พื้นที่เป้าหมาย และข้อเสนอแนะที่นำไปใช้ได้จริง.
       </div>
       <table class="cmp-table">
         <thead><tr><th>รายการ</th><th>รายละเอียด</th></tr></thead>
@@ -683,10 +733,18 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
           <tr><td>ช่วงเวลา</td><td>ปี 2566–2568</td></tr>
           <tr><td>จำนวนเหตุการณ์</td><td>2,600 เหตุการณ์ (3 ปีรวม)</td></tr>
           <tr><td>จำนวนผู้ประสบเหตุ</td><td>5,615 ราย (3 ปีรวม)</td></tr>
+          <tr><td>Portfolio Focus</td><td>Data Storytelling · Policy Analytics · Risk Communication</td></tr>
           <tr><td>Tech Stack</td><td>Python · pandas · Chart.js · HTML/CSS/JS</td></tr>
           <tr><td>เผยแพร่</td><td>GitHub Pages (Public Sector · Non-commercial)</td></tr>
         </tbody>
       </table>
+      <div style="margin-top:12px">
+        <ul class="design-list">
+          <li><strong>Visual Principle:</strong> ใช้โครงแบบ Executive Dashboard เพื่อเน้น KPI, Trend, Action</li>
+          <li><strong>Data Principle:</strong> ตัวชี้วัดทุกตัวตรวจสอบย้อนกลับได้และมีบริบทนโยบายกำกับ</li>
+          <li><strong>Communication Principle:</strong> ทุกกราฟสื่อสารคำถามเดียวอย่างชัดเจนภายในไม่กี่วินาที</li>
+        </ul>
+      </div>
       <div class="insight-box" style="margin-top:14px">
         ข้อมูลและการวิเคราะห์จัดทำขึ้นเพื่อประโยชน์สาธารณะและสนับสนุนการตัดสินใจเชิงนโยบาย
         <strong>ไม่อนุญาตให้นำไปใช้แสวงหาผลประโยชน์ส่วนบุคคล</strong>
@@ -696,7 +754,7 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
 
   <!-- Other Projects -->
   <div class="card" style="margin-top:0">
-    <div class="card-title"><span class="icon">🔗</span>ผลงานวิเคราะห์ข้อมูลอื่นๆ</div>
+    <div class="card-title"><span class="icon">🔗</span>ผลงานวิเคราะห์ข้อมูลอื่นๆ<span class="ct-badge ct-map">Portfolio</span></div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
       <a href="https://bma-statistics-pw.github.io/BMA-Congestion-Problem/" target="_blank"
          style="text-decoration:none;background:#0a1520;border:1px solid #1e3050;border-radius:10px;padding:18px;display:block;transition:border-color .2s"
@@ -727,8 +785,125 @@ body{font-family:'NumericOverride','Sarabun',sans-serif;background:#0f1923;color
 </div><!-- /main -->
 <div class="footer" style="margin-left:220px" id="main-footer">© Prapawadee_W. | กลุ่มสถิติและวิจัย กองนโยบายและแผน กทม. | ข้อมูลอุบัติเหตุ บช.น. ปี 2566–2568</div>
 
+<script src="data/data_2566.js"></script>
+<script src="data/data_2567.js"></script>
+<script src="data/data_2568.js"></script>
+<script src="data/data_all.js"></script>
 <script>
-const D = {"kpi_2566":{"events":899,"people":1895,"dead":772,"admit":360,"minor":763},"kpi_2567":{"events":933,"people":2018,"dead":812,"admit":397,"minor":809},"kpi_2568":{"events":768,"people":1702,"dead":727,"admit":307,"minor":668},"monthly":{"2566":[77,59,67,96,73,69,82,63,69,67,73,104],"2567":[112,83,98,95,61,75,68,71,62,69,63,76],"2568":[77,61,55,54,55,68,65,71,65,53,73,71]},"dead_monthly":{"2566":[54,54,50,67,62,61,76,55,68,62,71,92],"2567":[99,68,71,74,50,64,64,63,60,67,63,69],"2568":[70,58,55,53,52,57,61,63,62,58,71,67]},"accident_form":{"คู่กรณีเป็นคนเดินเท้าหรือสัตว์":{"บาดเจ็บนอนรักษาใน รพ.":113,"เสียชีวิต":256,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":301},"คู่กรณีเป็นรถ":{"บาดเจ็บนอนรักษาใน รพ.":782,"เสียชีวิต":1255,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":1846},"ไม่มีคู่กรณี":{"บาดเจ็บนอนรักษาใน รพ.":169,"เสียชีวิต":800,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":93}},"vehicle":{"รถกระบะ":{"บาดเจ็บนอนรักษาใน รพ.":72,"เสียชีวิต":57,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":368},"รถจักรยานยนต์":{"บาดเจ็บนอนรักษาใน รพ.":697,"เสียชีวิต":1860,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":453},"รถบรรทุก 10 ล้อขึ้นไป":{"บาดเจ็บนอนรักษาใน รพ.":3,"เสียชีวิต":2,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":150},"รถบรรทุก 6 ล้อ":{"บาดเจ็บนอนรักษาใน รพ.":7,"เสียชีวิต":4,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":144},"รถบรรทุกตู้คอนเทนเนอร์/รถพ่วง/ลากจูง":{"บาดเจ็บนอนรักษาใน รพ.":8,"เสียชีวิต":0,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":110},"รถยนต์ส่วนบุคคลไม่เกิน 7 ที่นั่ง(รถเก๋ง)":{"บาดเจ็บนอนรักษาใน รพ.":102,"เสียชีวิต":62,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":635},"รถแท็กซี่":{"บาดเจ็บนอนรักษาใน รพ.":14,"เสียชีวิต":9,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":87},"รถโดยสารขนาดใหญ่(มินิบัส/รถบัส)":{"บาดเจ็บนอนรักษาใน รพ.":44,"เสียชีวิต":1,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":136}},"behavior":{"ขับเร็วเกินกำหนด/เกินสมควร":2154,"เปลี่ยนเลน/เลี้ยวรถตัดหน้าในระยะกระชั้นชิด":903,"ฝ่าฝืนเครื่องหมาย/สัญญาณไฟจราจร":466,"ขับรถตามคันหน้าระยะประชิด":372,"แซงในที่คับขัน":311,"หลับใน/ง่วง/อ่อนเพลีย":284,"ขับรถย้อนศร":212,"ดื่มสุรา/เมาสุรา":182},"age_status":{"18-24":{"บาดเจ็บนอนรักษาใน รพ.":189,"เสียชีวิต":368,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":216},"25-34":{"บาดเจ็บนอนรักษาใน รพ.":225,"เสียชีวิต":576,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":527},"35-44":{"บาดเจ็บนอนรักษาใน รพ.":139,"เสียชีวิต":393,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":436},"45-54":{"บาดเจ็บนอนรักษาใน รพ.":79,"เสียชีวิต":299,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":405},"55-64":{"บาดเจ็บนอนรักษาใน รพ.":72,"เสียชีวิต":190,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":262},"65+":{"บาดเจ็บนอนรักษาใน รพ.":58,"เสียชีวิต":164,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":102},"<18":{"บาดเจ็บนอนรักษาใน รพ.":130,"เสียชีวิต":148,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":67}},"gender_status":{"ชาย":{"บาดเจ็บนอนรักษาใน รพ.":738,"เสียชีวิต":1871,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":1795},"หญิง":{"บาดเจ็บนอนรักษาใน รพ.":326,"เสียชีวิต":440,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":445}},"helmet":{"สวมหมวกนิรภัย":{"บาดเจ็บนอนรักษาใน รพ.":338,"เสียชีวิต":811,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":280},"ไม่สวมหมวกนิรภัย":{"บาดเจ็บนอนรักษาใน รพ.":358,"เสียชีวิต":1040,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":173}},"lighting":{"มองเห็นชัด":{"บาดเจ็บนอนรักษาใน รพ.":854,"เสียชีวิต":1724,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":1784},"มองเห็นไม่ชัด":{"บาดเจ็บนอนรักษาใน รพ.":158,"เสียชีวิต":421,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":330},"มืด":{"บาดเจ็บนอนรักษาใน รพ.":52,"เสียชีวิต":166,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":126}},"road_shape":{"จุดกลับรถ ":{"บาดเจ็บนอนรักษาใน รพ.":15,"เสียชีวิต":33,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":31},"ทางตรง ":{"บาดเจ็บนอนรักษาใน รพ.":740,"เสียชีวิต":1793,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":1741},"ทางร่วม ":{"บาดเจ็บนอนรักษาใน รพ.":14,"เสียชีวิต":10,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":17},"ทางแยก ":{"บาดเจ็บนอนรักษาใน รพ.":175,"เสียชีวิต":175,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":275},"ทางโค้ง ":{"บาดเจ็บนอนรักษาใน รพ.":72,"เสียชีวิต":181,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":78},"สะพาน ":{"บาดเจ็บนอนรักษาใน รพ.":27,"เสียชีวิต":73,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":53}},"road_type":{"ทางด่วน/ทางพิเศษ ":{"บาดเจ็บนอนรักษาใน รพ.":71,"เสียชีวิต":33,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":90},"ทางหลวงชนบท ":{"บาดเจ็บนอนรักษาใน รพ.":128,"เสียชีวิต":328,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":245},"ทางหลวงท้องถิ่น ":{"บาดเจ็บนอนรักษาใน รพ.":238,"เสียชีวิต":586,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":498},"ทางหลวงพิเศษระหว่างเมือง ":{"บาดเจ็บนอนรักษาใน รพ.":17,"เสียชีวิต":75,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":54},"ทางหลวงแผ่นดิน ":{"บาดเจ็บนอนรักษาใน รพ.":494,"เสียชีวิต":1128,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":1152},"อื่นๆ ":{"บาดเจ็บนอนรักษาใน รพ.":116,"เสียชีวิต":161,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":201}},"bk_events":{"บก. 2":403,"บก. 3":364,"บก. 9":358,"บก. 4":289,"บก. 5":256,"บก. 7":253,"บก. 1":252,"บก. 8":205,"บก. 6":128},"bk_dead":{"บก. 2":401,"บก. 3":375,"บก. 9":349,"บก. 4":281,"บก. 5":240,"บก. 7":221,"บก. 8":203,"บก. 1":128,"กองบังคับการตำรวจจราจร":61},"nat_count":{"ไทย":5212,"เมียนมา":189,"ต่างชาติอื่นๆ":43,"ลาว":40,"กัมพูชา":39,"จีน":16,"อินเดีย":9},"nat_rate":{"ไทย":40.7,"เมียนมา":52.9,"ลาว":60.0,"กัมพูชา":46.2,"จีน":37.5,"อินเดีย":44.4,"ต่างชาติอื่นๆ":20.9},"vehicle_th":{"รถจักรยานยนต์":2768,"รถยนต์ส่วนบุคคลไม่เกิน 7 ที่นั่ง(รถเก๋ง)":776,"รถกระบะ":459,"รถโดยสารขนาดใหญ่(มินิบัส/รถบัส)":178,"รถบรรทุก 10 ล้อขึ้นไป":153,"รถบรรทุก 6 ล้อ":141},"role_th":{"ผู้ขับขี่":4133,"ผู้โดยสาร":815,"คนเดินเท้า":257},"status_th":{"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":2128,"เสียชีวิต":2120,"บาดเจ็บนอนรักษาใน รพ.":964},"helmet_th":{"ไม่สวมหมวกนิรภัย":1422,"สวมหมวกนิรภัย":1338},"vehicle_fo":{"รถจักรยานยนต์":217,"รถกระบะ":35,"รถยนต์ส่วนบุคคลไม่เกิน 7 ที่นั่ง(รถเก๋ง)":16,"รถสามล้อเครื่อง/รถพ่วงข้าง":10,"รถบรรทุก 6 ล้อ":7,"รถจักรยาน/สามล้อถีบ":5},"role_fo":{"ผู้ขับขี่":173,"ผู้โดยสาร":118,"คนเดินเท้า":45},"status_fo":{"เสียชีวิต":161,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":88,"บาดเจ็บนอนรักษาใน รพ.":87},"helmet_fo":{"ไม่สวมหมวกนิรภัย":137,"สวมหมวกนิรภัย":79},"alcohol":{"ไม่ดื่ม":3377,"ดื่มเกินกำหนด":76,"ดื่มแล้วขับ (ไม่เกินกำหนด)":11},"alcohol_dead":{"ไม่ดื่ม":1172,"ดื่มเกินกำหนด":22,"ดื่มแล้วขับ (ไม่เกินกำหนด)":3},"belt":{"คาดเข็มขัดนิรภัย":{"บาดเจ็บนอนรักษาใน รพ.":126,"เสียชีวิต":53,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":933},"ไม่คาดเข็มขัดนิรภัย":{"บาดเจ็บนอนรักษาใน รพ.":41,"เสียชีวิต":52,"ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.":65}},"occupation_dead":{"รับจ้างทั่วไป ":791,"พนักงานบริษัท/ลูกจ้าง ":468,"นักเรียน/นักศึกษา ":208,"อื่นๆ ":198,"แรงงานต่างด้าว ":92,"อื่นๆ ไม่ทราบ":89,"ค้าขาย/ประกอบธุรกิจ ":66,"ว่างงาน/ไม่ประกอบอาชีพ ":60}};
+const YEAR_DATA = { "2566": DATA_2566, "2567": DATA_2567, "2568": DATA_2568 };
+
+function mergeDeepSum(target, source) {
+  if (!source || typeof source !== 'object') return target;
+  Object.keys(source).forEach((key) => {
+    const value = source[key];
+    if (typeof value === 'number') {
+      target[key] = (target[key] || 0) + value;
+      return;
+    }
+    if (Array.isArray(value)) {
+      if (!Array.isArray(target[key])) {
+        target[key] = Array(value.length).fill(0);
+      }
+      value.forEach((num, idx) => {
+        target[key][idx] = (target[key][idx] || 0) + (Number(num) || 0);
+      });
+      return;
+    }
+    if (value && typeof value === 'object') {
+      if (!target[key] || typeof target[key] !== 'object' || Array.isArray(target[key])) {
+        target[key] = {};
+      }
+      mergeDeepSum(target[key], value);
+    }
+  });
+  return target;
+}
+
+function aggregateAllYears() {
+  const all = {};
+  Object.values(YEAR_DATA).forEach((yearObj) => mergeDeepSum(all, yearObj));
+  all.year = 'all';
+  all.kpi = {
+    events: Object.values(YEAR_DATA).reduce((s, y) => s + (y.kpi?.events || 0), 0),
+    people: Object.values(YEAR_DATA).reduce((s, y) => s + (y.kpi?.people || 0), 0),
+    dead: Object.values(YEAR_DATA).reduce((s, y) => s + (y.kpi?.dead || 0), 0),
+    admit: Object.values(YEAR_DATA).reduce((s, y) => s + (y.kpi?.admit || 0), 0),
+    minor: Object.values(YEAR_DATA).reduce((s, y) => s + (y.kpi?.minor || 0), 0),
+  };
+  all.monthly = DATA_ALL.monthly_events_all || {};
+  all.dead_monthly = DATA_ALL.monthly_dead_all || {};
+  return all;
+}
+
+const D_ALL = aggregateAllYears();
+
+function getActiveYearFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const year = params.get('year');
+  if (year === 'all' || YEAR_DATA[year]) return year;
+  return 'all';
+}
+
+let ACTIVE_YEAR = getActiveYearFromQuery();
+let D = ACTIVE_YEAR === 'all' ? D_ALL : YEAR_DATA[ACTIVE_YEAR];
+
+function setActiveYear(year) {
+  if (year !== 'all' && !YEAR_DATA[year]) return;
+  const params = new URLSearchParams(window.location.search);
+  params.set('year', year);
+  window.location.search = params.toString();
+}
+
+function setYearFilterButtons() {
+  document.querySelectorAll('#year-filter .yr-btn').forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.year === ACTIVE_YEAR);
+  });
+}
+
+function percent(part, total) {
+  if (!total) return '0.0%';
+  return `${((part / total) * 100).toFixed(1)}%`;
+}
+
+function updateOverviewKpi() {
+  const kpi = D.kpi || { events: 0, people: 0, dead: 0, admit: 0, minor: 0 };
+  const isAll = ACTIVE_YEAR === 'all';
+  const label = isAll ? '3 ปี' : `ปี ${ACTIVE_YEAR}`;
+  const avgPerYear = isAll ? Math.round((kpi.events || 0) / 3) : kpi.events || 0;
+
+  const vehicle = D.vehicle || {};
+  const motorcycle = vehicle['รถจักรยานยนต์'] || {};
+  const motorTotal = (motorcycle['เสียชีวิต'] || 0) + (motorcycle['บาดเจ็บนอนรักษาใน รพ.'] || 0) + (motorcycle['ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.'] || 0);
+  const vehicleTotal = Object.values(vehicle).reduce((sum, row) => sum + (row['เสียชีวิต'] || 0) + (row['บาดเจ็บนอนรักษาใน รพ.'] || 0) + (row['ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.'] || 0), 0);
+
+  const helmet = D.helmet || {};
+  const noHelmet = helmet['ไม่สวมหมวกนิรภัย'] || {};
+  const noHelmetTotal = (noHelmet['เสียชีวิต'] || 0) + (noHelmet['บาดเจ็บนอนรักษาใน รพ.'] || 0) + (noHelmet['ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.'] || 0);
+
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+
+  setText('overview-badge', `${isAll ? 'รวม 3 ปี' : `ปี ${ACTIVE_YEAR}`}: ${(kpi.people || 0).toLocaleString()} ราย`);
+  setText('kpi-events-label', `เหตุการณ์ทั้งหมด (${label})`);
+  setText('kpi-events', (kpi.events || 0).toLocaleString());
+  setText('kpi-events-sub', isAll ? `เฉลี่ย ${avgPerYear.toLocaleString()} เหตุการณ์/ปี` : `ผู้ประสบเหตุรวม ${(kpi.people || 0).toLocaleString()} ราย`);
+
+  setText('kpi-dead-label', `เสียชีวิตรวม (${label})`);
+  setText('kpi-dead', (kpi.dead || 0).toLocaleString());
+  setText('kpi-dead-sub', `${percent(kpi.dead || 0, kpi.people || 0)} ของผู้ประสบเหตุทั้งหมด`);
+
+  setText('kpi-admit-label', `บาดเจ็บนอน รพ. (${label})`);
+  setText('kpi-admit', (kpi.admit || 0).toLocaleString());
+  setText('kpi-admit-sub', `${percent(kpi.admit || 0, kpi.people || 0)} ของผู้ประสบเหตุทั้งหมด`);
+
+  setText('kpi-minor', (kpi.minor || 0).toLocaleString());
+  setText('kpi-minor-sub', `${percent(kpi.minor || 0, kpi.people || 0)} ของผู้ประสบเหตุทั้งหมด`);
+
+  setText('kpi-bike-share', `${(vehicleTotal ? (motorTotal * 100) / vehicleTotal : 0).toFixed(1)}%`);
+  setText('kpi-bike-dead-rate', `${(noHelmetTotal ? (noHelmet['เสียชีวิต'] || 0) * 100 / noHelmetTotal : 0).toFixed(1)}%`);
+}
 
 const M=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
 const C={red:'#f87171',orange:'#fbbf24',green:'#34d399',blue:'#4fa3e8',purple:'#a78bfa',teal:'#22d3ee',pink:'#f472b6'};
@@ -772,22 +947,31 @@ function mkDoughnut(id,labels,data,colors){
 }
 function barList(elId,data,fillClass='fill-blue'){
   const el=document.getElementById(elId);
-  const max=Math.max(...Object.values(data));
-  el.innerHTML=Object.entries(data).map(([k,v])=>
+  const entries=Object.entries(data||{});
+  if(!entries.length){
+    el.innerHTML='<li class="bar-item"><div class="bar-lbl"><span>ไม่มีข้อมูล</span><strong>0</strong></div><div class="bar-track"><div class="bar-fill fill-blue" style="width:0%"></div></div></li>';
+    return;
+  }
+  const max=Math.max(...entries.map(([,v])=>v));
+  el.innerHTML=entries.map(([k,v])=>
     `<li class="bar-item"><div class="bar-lbl"><span>${k.trim()}</span><strong>${v.toLocaleString()}</strong></div>
     <div class="bar-track"><div class="bar-fill ${fillClass}" style="width:${Math.round(v/max*100)}%"></div></div></li>`
   ).join('');
 }
 
 window.addEventListener('load',()=>{
+  setYearFilterButtons();
+  updateOverviewKpi();
+
   // ===== Overview =====
-  mkBar('chartOverviewCompare',['2566','2567','2568'],[
-    {label:'เหตุการณ์',data:[899,933,768],backgroundColor:C.blue+'99'},
-    {label:'เสียชีวิต',data:[772,812,727],backgroundColor:C.red+'99'},
-    {label:'บาดเจ็บนอน รพ.',data:[360,397,307],backgroundColor:C.orange+'99'},
+  const compareYears = ['2566','2567','2568'];
+  mkBar('chartOverviewCompare',compareYears,[
+    {label:'เหตุการณ์',data:compareYears.map(y=>DATA_ALL.kpi_all[y].events),backgroundColor:C.blue+'99'},
+    {label:'เสียชีวิต',data:compareYears.map(y=>DATA_ALL.kpi_all[y].dead),backgroundColor:C.red+'99'},
+    {label:'บาดเจ็บนอน รพ.',data:compareYears.map(y=>DATA_ALL.kpi_all[y].admit),backgroundColor:C.orange+'99'},
   ],{barPercentage:.7});
   mkDoughnut('chartOverviewPie',['เสียชีวิต','บาดเจ็บนอน รพ.','ไม่บาดเจ็บ/เล็กน้อย'],
-    [2311,1064,2240],[C.red,C.orange,C.green]);
+    [D.kpi?.dead||0,D.kpi?.admit||0,D.kpi?.minor||0],[C.red,C.orange,C.green]);
   const vLabels=Object.keys(D.vehicle).map(k=>k.replace('รถยนต์ส่วนบุคคลไม่เกิน 7 ที่นั่ง(รถเก๋ง)','รถเก๋ง').replace('รถบรรทุกตู้คอนเทนเนอร์/รถพ่วง/ลากจูง','รถบรรทุกตู้'));
   const vDead=Object.values(D.vehicle).map(v=>v['เสียชีวิต']);
   const vTotal=Object.values(D.vehicle).map(v=>v['เสียชีวิต']+v['บาดเจ็บนอนรักษาใน รพ.']+v['ไม่บาดเจ็บ/บาดเจ็บไม่นอน รพ.']);
@@ -802,16 +986,26 @@ window.addEventListener('load',()=>{
   barList('behListOverview',D.behavior,'fill-orange');
 
   // ===== Trend =====
-  mkLine('chartMonthlyEvents',[
-    {label:'2566',data:D.monthly['2566'],borderColor:C.green,backgroundColor:C.green+'22',fill:true},
-    {label:'2567',data:D.monthly['2567'],borderColor:C.blue,backgroundColor:C.blue+'22',fill:true},
-    {label:'2568',data:D.monthly['2568'],borderColor:C.red,backgroundColor:C.red+'22',fill:true},
-  ]);
-  mkLine('chartMonthlyDead',[
-    {label:'2566',data:D.dead_monthly['2566'],borderColor:C.green,backgroundColor:C.green+'22',fill:true},
-    {label:'2567',data:D.dead_monthly['2567'],borderColor:C.blue,backgroundColor:C.blue+'22',fill:true},
-    {label:'2568',data:D.dead_monthly['2568'],borderColor:C.red,backgroundColor:C.red+'22',fill:true},
-  ]);
+  const eventLineDatasets = ACTIVE_YEAR === 'all'
+    ? [
+        {label:'2566',data:D.monthly['2566'],borderColor:C.green,backgroundColor:C.green+'22',fill:true},
+        {label:'2567',data:D.monthly['2567'],borderColor:C.blue,backgroundColor:C.blue+'22',fill:true},
+        {label:'2568',data:D.monthly['2568'],borderColor:C.red,backgroundColor:C.red+'22',fill:true},
+      ]
+    : [
+        {label:`ปี ${ACTIVE_YEAR}`,data:D.monthly_events,borderColor:C.blue,backgroundColor:C.blue+'22',fill:true},
+      ];
+  const deadLineDatasets = ACTIVE_YEAR === 'all'
+    ? [
+        {label:'2566',data:D.dead_monthly['2566'],borderColor:C.green,backgroundColor:C.green+'22',fill:true},
+        {label:'2567',data:D.dead_monthly['2567'],borderColor:C.blue,backgroundColor:C.blue+'22',fill:true},
+        {label:'2568',data:D.dead_monthly['2568'],borderColor:C.red,backgroundColor:C.red+'22',fill:true},
+      ]
+    : [
+        {label:`ปี ${ACTIVE_YEAR}`,data:D.monthly_dead,borderColor:C.red,backgroundColor:C.red+'22',fill:true},
+      ];
+  mkLine('chartMonthlyEvents',eventLineDatasets);
+  mkLine('chartMonthlyDead',deadLineDatasets);
   const lgKeys=Object.keys(D.lighting);
   mkBar('chartLighting',lgKeys,[
     {label:'เสียชีวิต',data:lgKeys.map(k=>D.lighting[k]['เสียชีวิต']),backgroundColor:C.red+'cc'},
@@ -935,3 +1129,4 @@ function showPage(name,el){
 </script>
 </body>
 </html>
+
